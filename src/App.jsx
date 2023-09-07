@@ -8,11 +8,15 @@ const App = () => {
     <div id="container">
       <div id="navbar">
         <div>Currently selected: </div>
-        <div className={`${selectedColor ? 'selected' : null}  ${selectedColor}`}>
-          {selectedColor}</div>
+        <div
+          className={`${selectedColor ? "selected" : null}  ${selectedColor}`}
+        >
+          {selectedColor}
+        </div>
       </div>
       <div id="colors-list">
-        <Color color="red" id="red" setSelectedColor={setSelectedColor}  />
+        {/*  added id to select each color circle later */}
+        <Color color="red" id="red" setSelectedColor={setSelectedColor} />
         <Color color="blue" id="blue" setSelectedColor={setSelectedColor} />
         <Color color="green" id="green" setSelectedColor={setSelectedColor} />
       </div>
@@ -22,46 +26,23 @@ const App = () => {
 
 const Color = ({ color, setSelectedColor }) => {
   return (
-    <div className={color}
-    onClick={() => {
-      setSelectedColor(color);
-      const circle = document.querySelector(`.${color}`);
-      circle.classList.add('selected');
-      //  setTimeout(() => circle.classList.remove('selected'), 2000);
-      
-      // const circles = document.querySelector("#colors-list");
-      // const eachCircle = circles.querySelectorAll(".selected");
-      // console.log(eachCircle);
+    <div
+      className={color}
+      onClick={() => {
+        setSelectedColor(color);
+        {
+          /* select whichever circle is selected and add .selected class to it*/
+        }
+        const circle = document.querySelector(`.${color}`);
+        circle.classList.add("selected");
 
-    }} />
+        {
+          /*  wanted a better way to remove the selected border around a circle after user clicks on another circle, but this is my best try at it  */
+        }
+        setTimeout(() => circle.classList.remove("selected"), 2000);
+      }}
+    />
   );
 };
 
 export default App;
-
-/*
-.red {
-  background-color: #cf000f;
-}
-.orange {
-  background-color: #eb6b56;
-}
-.yellow {
-  background-color: #ffc153;
-}
-.green {
-  background-color: #27ae60;
-}
-.blue {
-  background-color: #1d4fda;
-}
-.violet {
-  background-color: #462446;
-}
-.black {
-  background-color: #000000;
-}
-.white {
-  background-color: #ffffff;
-}
-*/
